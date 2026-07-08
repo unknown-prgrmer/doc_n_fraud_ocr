@@ -1,0 +1,13 @@
+groups:
+  - name: ocr_predictions
+    interval: 15s
+    rules:
+      - alert: LowAverageOCRScore
+        expr: ocr_prediction_score_avg < 0.5
+        for: 5m
+        labels:
+          severity: critical
+          component: ocr
+        annotations:
+          summary: "Low OCR Prediction Score Alert"
+          description: "Average OCR prediction score is below 0.5. Current value: {{ $value }}"

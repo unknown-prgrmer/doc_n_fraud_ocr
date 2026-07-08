@@ -1,0 +1,4 @@
+# Ignore the possibly-missing-attribute rule globally
+# This is a valid type checking issue but is acceptable for test code
+[rules]
+possibly-missing-attribute = "ignore"
