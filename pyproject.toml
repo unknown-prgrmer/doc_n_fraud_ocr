@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["app"]
+
+[project]
+name = "test-technique"
+version = "0.1.0"
+description = ""
+authors = [{name = "Quicksign"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.12",
+    "uvicorn>=0.34.0",
+    "pillow>=11.3.0",
+    "pydantic>=2.11.7",
+    "python-multipart>=0.0.20",
+    "httpx>=0.28.1",
+  "minio>=7.2.18",
+  "pymongo>=4.10.1",
+  "prometheus-client>=0.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+  "pre-commit",
+    "ty",
+]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 99
+omit = ["**/tests/test_*.py","app/main.py"]
+
+[tool.ruff]
+line-length = 82
+
+[tool.ruff.lint]
+select = [
+  "F",
+  "E",
+  "D",
+  "I"
+]
+ignore = [
+  "E501"
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=app --cov-report=term-missing"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+strict_optional = true
